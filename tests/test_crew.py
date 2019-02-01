@@ -1,11 +1,12 @@
-from datadog import statsd
 import logging
 import os
-import pytest
 import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'sqsworkers')))
 
-import crew
+import pytest
+from datadog import statsd
+
+from sqsworkers import crew
+
 
 class MsgProcessor():
     def __init__(self):
@@ -28,6 +29,7 @@ def test_crew_with_all_args():
 
     assert crew.Crew(**optionals).worker_limit == 9
 
+
 def test_crew_with_no_optionals():
     required_only = {
         'sqs_session': 'fake session',
@@ -39,6 +41,7 @@ def test_crew_with_no_optionals():
 
     assert crew.Crew(**required_only).worker_limit == 10
 
+
 def test_crew_with_resource():
     with_resource = {
         'sqs_resource': 'resource',
@@ -48,6 +51,7 @@ def test_crew_with_resource():
     }
 
     assert crew.Crew(**with_resource).sqs_resource == 'resource'
+
 
 def test_crew_without_sqs():
     no_sqs = {
