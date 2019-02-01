@@ -1,10 +1,10 @@
-from datadog import statsd
-
-import boto3
 import logging
 import os
 import sys
 import time
+
+import boto3
+from datadog import statsd
 
 from sqsworkers.crew import Crew
 
@@ -19,6 +19,7 @@ std_logger.setLevel(logging.DEBUG)
 msg_logger.addHandler(std_logger)
 
 app_logger = logging.getLogger('default')
+
 
 class MsgProcessor():
     def __init__(self, msg):
@@ -57,5 +58,6 @@ def test_crew_with_one_worker():
     c.start()
     time.sleep(3)
     c.stop()
+
 
 test_crew_with_one_worker()

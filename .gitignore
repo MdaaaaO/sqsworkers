@@ -1,11 +1,11 @@
-/*.egg-info/
-*.pyc
-.DS_Store
 .cache
 .coverage
+.DS_Store
 .eggs
-/.ve/
+*.pyc
 /__pycache__/
+/.ve/
+/*.egg-info/
 /build/
-/dist/
 /demo/.ve/
+/dist/
